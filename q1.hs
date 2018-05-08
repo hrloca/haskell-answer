@@ -7,12 +7,12 @@
 
 -}
 
-isMultiplesOf :: Integer -> Integer -> Bool
-isMultiplesOf n x = 0 == mod n x
+isMultiples :: Integer -> Integer -> Bool
+isMultiples x n = 0 == mod n x
 
 isAnyMultiples :: [Integer] -> Integer -> Bool
 isAnyMultiples [] _ = False
-isAnyMultiples (x:xs) n =  n `isMultiplesOf` x || isAnyMultiples xs n
+isAnyMultiples xs n = or [isMultiples x n | x <- xs]
 
 by3or5Multiples = isAnyMultiples [3,5]
 
