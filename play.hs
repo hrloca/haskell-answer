@@ -84,22 +84,3 @@ chanin n
  | odd n = n : chanin (n * 3 + 1)
 
 ------------------------------------------------------------
-
--- isMultiplesOf :: Integer -> Integer -> Bool
--- isMultiplesOf n x = 0 == mod n x
--- 
--- isAnyMultiples :: [Integer] -> Integer -> Bool
--- isAnyMultiples [] _ = False
--- isAnyMultiples (x:xs) n =  n `isMultiplesOf` x || isAnyMultiples xs n
--- 
--- by3or5Multiples = isAnyMultiples [3,5]
--- 
--- answer :: Integer -> Integer
--- answer n = sum (filter by3or5Multiples [1..(n-1)])
-
-fib = 0 : 1 : zipWith (+) fib (tail fib)
-
-filterByEven = filter even
-filterByNotOver4Mil = filter (\n -> n < 4000000)
-
-main = print $ filterByNotOver4Mil fib
