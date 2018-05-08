@@ -18,8 +18,8 @@ minFactor n = (factors n) !! 1
 
 primeFactors :: Integer -> [Integer]
 primeFactors 1 = []
-primeFactors x = (minFactor x) : factorization (x `div` (minFactor x))
+primeFactors x = (minFactor x) : primeFactors (x `div` (minFactor x))
 
-answer = last . primeFactors
+answer = (last . primeFactors) 600851475143
 
-main = print $ answer 600851475143
+main = print $ answer
