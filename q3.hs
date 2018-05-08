@@ -16,10 +16,10 @@ factors n = [x | x <- [1..n], mod n x == 0]
 minFactor :: Integer -> Integer
 minFactor n = (factors n) !! 1
 
-factorization :: Integer -> [Integer]
-factorization 1 = []
-factorization x = (minFactor x) : factorization (x `div` (minFactor x))
+primeFactors :: Integer -> [Integer]
+primeFactors 1 = []
+primeFactors x = (minFactor x) : factorization (x `div` (minFactor x))
 
-answer = last . factorization
+answer = last . primeFactors
 
 main = print $ answer 600851475143
