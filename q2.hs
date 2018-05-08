@@ -12,7 +12,4 @@
 
 fib = 0 : 1 : zipWith (+) fib (tail fib)
 
-ex4mil = filter (<4000000)
-filterByEven = filter even
-
-main = print $ (sum . filterByEven . ex4mil . (take 1000)) fib
+main = print $ (sum . (filter even) . (filter (<4000000)) . (take 1000)) fib
