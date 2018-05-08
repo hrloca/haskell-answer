@@ -12,4 +12,4 @@
 
 fib = 0 : 1 : zipWith (+) fib (tail fib)
 
-main = print $ (sum . (filter even) . (filter (<4000000)) . (take 1000)) fib
+main = print $ (sum . (filter even) . (takeWhile (<4000000))) fib
