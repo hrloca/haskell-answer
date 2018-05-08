@@ -7,14 +7,13 @@
 
 -}
 
-isMultiples :: Integer -> Integer -> Bool
-isMultiples x n = 0 == mod n x
+multiples :: Integer -> Integer -> Bool
+multiples n x = 0 == mod n x
 
-isAnyMultiples :: [Integer] -> Integer -> Bool
-isAnyMultiples [] _ = False
-isAnyMultiples xs n = or [isMultiples x n | x <- xs]
+anyMultiples :: [Integer] -> Integer -> Bool
+anyMultiples xs n = any (multiples n) xs
 
-by3or5Multiples = isAnyMultiples [3,5]
+by3or5Multiples = anyMultiples [3,5]
 
 answer :: Integer -> Integer
 answer n = sum (filter by3or5Multiples [1..(n-1)])
