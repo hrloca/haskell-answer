@@ -20,4 +20,6 @@ factorization :: Integer -> [Integer]
 factorization 1 = []
 factorization x = (minFactor x) : factorization (x `div` (minFactor x))
 
-main = print $ last $ factorization 600851475143
+answer = last . factorization
+
+main = print $ answer 600851475143
