@@ -12,14 +12,19 @@
 
 import Data.Char
 
+isEvenDigit :: Int -> Bool
 isEvenDigit = even . length . show
 
+isPalindrome :: Int -> Bool
 isPalindrome n = (isEvenDigit n) && ((\(x,y) -> x == (reverse y)) $ splitAt ((length (show n)) `div` 2) (show n))
 
+maxDigits :: Int -> Int
 maxDigits n = read $ (take n (repeat '9')) :: Int
 
+productLists :: Int -> [Int]
 productLists n = concat [[y*x | y <- [1..(maxDigits n)]] | x <- [1..(maxDigits n)]]
 
+maxPalindromeNumbers :: Int -> Int
 maxPalindromeNumbers n = maximum $ filter isPalindrome (productLists n)
 
 answer = maxPalindromeNumbers 3
