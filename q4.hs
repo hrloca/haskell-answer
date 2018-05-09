@@ -29,4 +29,4 @@ maxPalindromeNumbers n = maximum $ filter isPalindrome (productLists n)
 
 answer = maxPalindromeNumbers 3
 
-main = print $ answer
+main = print answer
