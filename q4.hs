@@ -10,6 +10,18 @@
 
 -}
 
-answer = 1
+import Data.Char
+
+isEvenDigit = even . length . show
+
+isPalindrome n = (isEvenDigit n) && ((\(x,y) -> x == (reverse y)) $ splitAt ((length (show n)) `div` 2) (show n))
+
+maxDigits n = read $ (take n (repeat '9')) :: Int
+
+productLists n = concat [[y*x | y <- [1..(maxDigits n)]] | x <- [1..(maxDigits n)]]
+
+maxPalindromeNumbers n = maximum $ filter isPalindrome (productLists n)
+
+answer = maxPalindromeNumbers 3
 
 main = print $ answer
