@@ -21,12 +21,36 @@ isPalindrome n = (isEvenDigit n) && ((\(x,y) -> x == (reverse y)) $ splitAt ((le
 maxDigits :: Int -> Int
 maxDigits n = read $ (take n (repeat '9')) :: Int
 
-productLists :: Int -> [Int]
-productLists n = concat [[y*x | y <- [1..(maxDigits n)]] | x <- [1..(maxDigits n)]]
+minDigits :: Int -> Int
+minDigits n = read $ '1' : (take (n-1) (repeat '0')) :: Int
 
-maxPalindromeNumbers :: Int -> Int
-maxPalindromeNumbers n = maximum $ filter isPalindrome (productLists n)
+minmax min max = (min, max)
 
-answer = maxPalindromeNumbers 3
+digit n = minmax (minDigits n) (maxDigits n)
+
+reverseListWithRange (min, max)
+  | min == max = [min]
+  | otherwise = max : reverseListWithRange (min, (max-1))
+
+reverseListDigitsOf = reverseListWithRange . digit
+
+productList [] = []
+productList all@(x:xs) = map (*x) all : productList xs
+
+maxPalindromeInListDigitOf n = productList $ reverseListDigitsOf n
+
+answer = (maxPalindromeInListDigitOf 9) !! 0 !! 0
 
 main = print answer
+
+-- productList [] = []
+-- productList all@(x:xs) = map (*x) all : productList xs
+-- reverseListDigits n = [(minDigits n)..(maxDigits n)]
+
+-- 1  2  3  4  5  6
+-- 2  4  6  8 10 12
+-- 3  /  9 12 15 18
+-- 4  /  / 16 20 24
+-- 5  /  /  / 25 30
+-- 6  /  /  /  / 36
+
