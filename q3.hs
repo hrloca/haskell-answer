@@ -10,8 +10,10 @@
 
 -}
 
+divisible a b = mod a b == 0
+
 factors :: Integer -> [Integer]
-factors n = [x | x <- [1..n], mod n x == 0]
+factors n = filter (divisible n) [1..n]
 
 minFactor :: Integer -> Integer
 minFactor n = (factors n) !! 1

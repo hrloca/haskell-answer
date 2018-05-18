@@ -19,9 +19,22 @@
 
 -}
 
-sumOfsquare n = sum [x**2 | x <- [1..n]]
-squareOfSum n = (sum [1..n]) ** 2
 
-answer n = round $ (squareOfSum n) - (sumOfsquare n)
+square n = n * n
+sumOfsquare n = sum $ map square [1..n]
+squareOfSum n = square $ sum [1..n]
+
+answer n = (squareOfSum n) - (sumOfsquare n)
+
+{-
+  ans :: Int -> Int
+  ans n = squareOfTheSum - sumOfTheSquares
+    where
+      square n = n * n 
+      squareOfTheSum = square $ sum [1..n]
+      sumOfTheSquares = sum $ map square [1..n]
+  
+  main = print $ ans 100
+-}
 
 main = print $ answer 100
